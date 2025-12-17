@@ -5,11 +5,11 @@ export const ASSETS = {
     default: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop',
   },
   characters: {
-    marshall_neutral: 'https://placehold.co/400x800/f5e6ca/4a90e2/png?text=Marshall',
-    lily_happy: 'https://placehold.co/400x800/f5e6ca/d9534f/png?text=Lily',
-    lily_excited: 'https://placehold.co/400x800/f5e6ca/d9534f/png?text=Lily!',
-    barney_suit: 'https://placehold.co/400x800/f5e6ca/4a90e2/png?text=Barney',
-    barney_awesome: 'https://placehold.co/400x800/f5e6ca/4a90e2/png?text=Legendary!',
-    default: 'https://placehold.co/400x800/f5e6ca/666/png?text=Character',
+    marshall_neutral: 'https://i.imgur.com/gZ3Z3LX.png', // Placeholder
+    lily_happy: 'https://i.imgur.com/uoo3dGz.png', // Placeholder
+    lily_excited: 'https://i.imgur.com/uoo3dGz.png', // Placeholder
+    barney_suit: 'https://i.imgur.com/sYf2ZfX.png', // Placeholder
+    barney_awesome: 'https://i.imgur.com/sYf2ZfX.png', // Placeholder
+    default: 'https://i.imgur.com/placeholder.png',
   },
 };

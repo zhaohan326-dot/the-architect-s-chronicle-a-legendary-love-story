@@ -10,9 +10,9 @@ interface CharacterSpriteProps {
   };
 }
 const positionClasses = {
-  left: 'bottom-0 left-[-10%]',
+  left: 'bottom-0 left-[-5%]',
   center: 'bottom-0 left-1/2 -translate-x-1/2',
-  right: 'bottom-0 right-[-10%]',
+  right: 'bottom-0 right-[-5%]',
 };
 export function CharacterSprite({ character }: CharacterSpriteProps) {
   const imageUrl = ASSETS.characters[character.asset] || ASSETS.characters.default;
@@ -23,7 +23,7 @@ export function CharacterSprite({ character }: CharacterSpriteProps) {
       exit={{ opacity: 0, y: 100 }}
       transition={{ type: 'spring', stiffness: 100, damping: 20 }}
       className={cn(
-        'absolute h-[90%] w-auto max-w-[40%]',
+        'absolute h-[85%] aspect-[3/4]',
         positionClasses[character.position]
       )}
     >

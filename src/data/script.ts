@@ -85,6 +85,6 @@ export const script: Record<string, Scene> = {
     dialogue: "And that, kids, was just the beginning of the story... To be continued.",
     background: 'title',
     characters: [],
-    // nextScene removed to end the game here
+    nextScene: 'intro', // Loop back for demo purposes
   },
 };
