@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
 import { DialogueBox } from './DialogueBox';
 import { CharacterSprite } from './CharacterSprite';
 import { ChoiceOverlay } from './ChoiceOverlay';
+import { GameHeader } from './GameHeader';
+import { PlaybookOverlay } from './PlaybookOverlay';
 import { ASSETS } from '@/lib/constants';
-import { cn } from '@/lib/utils';
 export function VisualNovelStage() {
   const getCurrentScene = useGameStore((state) => state.getCurrentScene);
+  const [isPlaybookOpen, setIsPlaybookOpen] = useState(false);
   const scene = getCurrentScene();
   if (!scene) {
     return (
@@ -19,6 +21,8 @@ export function VisualNovelStage() {
   const backgroundUrl = ASSETS.backgrounds[scene.background] || ASSETS.backgrounds.default;
   return (
     <div className="relative w-full h-full overflow-hidden bg-black flex flex-col font-handwritten">
+      <GameHeader onTogglePlaybook={() => setIsPlaybookOpen(true)} />
+      <PlaybookOverlay isOpen={isPlaybookOpen} onClose={() => setIsPlaybookOpen(false)} />
       {/* Background */}
       <AnimatePresence>
         <motion.div
@@ -33,7 +37,7 @@ export function VisualNovelStage() {
       </AnimatePresence>
       <div className="absolute inset-0 bg-black/10" />
       {/* Characters */}
-      <div className="flex-1 relative flex justify-center items-end">
+      <div className="flex-1 relative flex justify-center items-end pt-24">
         <AnimatePresence>
           {scene.characters.map((char) => (
             <CharacterSprite key={char.id} character={char} />

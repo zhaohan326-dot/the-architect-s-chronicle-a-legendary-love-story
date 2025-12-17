@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGameStore } from '@/store/gameStore';
 import { VisualNovelStage } from '@/components/game/VisualNovelStage';
+import { EndScreen } from '@/components/game/EndScreen';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ASSETS } from '@/lib/constants';
 import { ThemeToggle } from '@/components/ThemeToggle';
 function TitleScreen() {
   const startGame = useGameStore((state) => state.startGame);
+  const loadGame = useGameStore((state) => state.loadGame);
+  const hasSavedGame = useGameStore((state) => state.hasSavedGame);
+  const [showLoad, setShowLoad] = useState(false);
+  useEffect(() => {
+    setShowLoad(hasSavedGame());
+  }, [hasSavedGame]);
   return (
     <div
       className="w-full h-screen flex flex-col items-center justify-center p-8 paper-texture bg-cover bg-center"
@@ -28,13 +35,25 @@ function TitleScreen() {
             A Legendary Love Story
           </p>
         </div>
-        <Button
-          onClick={startGame}
-          className="mt-12 font-handwritten text-3xl px-10 py-8 sketch-border-sm hover:animate-wiggle"
-          size="lg"
-        >
-          Begin the Story
-        </Button>
+        <div className="mt-12 flex flex-col sm:flex-row gap-6">
+          <Button
+            onClick={startGame}
+            className="font-handwritten text-3xl px-10 py-8 sketch-border-sm hover:animate-wiggle"
+            size="lg"
+          >
+            New Story
+          </Button>
+          {showLoad && (
+            <Button
+              onClick={loadGame}
+              variant="secondary"
+              className="font-handwritten text-3xl px-10 py-8 sketch-border-sm hover:animate-wiggle"
+              size="lg"
+            >
+              Load Story
+            </Button>
+          )}
+        </div>
       </motion.div>
       <footer className="absolute bottom-4 text-center text-foreground/80 z-10 font-handwritten text-sm">
         <p>Built with ❤️ at Cloudflare</p>
@@ -50,7 +69,7 @@ export function HomePage() {
         {status === 'title' && (
           <motion.div
             key="title"
-            exit={{ opacity: 0, scale: 1.2 }}
+            exit={{ opacity: 0, scale: 1.1 }}
             transition={{ duration: 0.7 }}
           >
             <TitleScreen />
@@ -65,6 +84,16 @@ export function HomePage() {
             className="w-full h-full"
           >
             <VisualNovelStage />
+          </motion.div>
+        )}
+        {status === 'ended' && (
+           <motion.div
+            key="ended"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <EndScreen />
           </motion.div>
         )}
       </AnimatePresence>
