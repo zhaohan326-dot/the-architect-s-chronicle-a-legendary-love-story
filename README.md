@@ -1,6 +1,6 @@
 # The Architect's Chronicle: A Legendary Love Story
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/zhaohan326-dot/the-architect-s-chronicle-a-legendary-love-story)
 
 A whimsical, illustrative dating simulator and visual novel (Galgame) inspired by *How I Met Your Mother*. Step into the shoes of The Architect navigating life, friendship, and romance in New York City. Featuring a robust Visual Novel engine with a 'Sketchbook' aesthetic mimicking architectural drawings and doodles, 'Playbook' decision engine, 'Suit Up' stylishness meter, and 'Blue French Horn' romanticism tracker.
 
@@ -100,7 +100,7 @@ Deploy to Cloudflare Workers/Pages:
    bun run deploy
    ```
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/zhaohan326-dot/the-architect-s-chronicle-a-legendary-love-story)
 
 The app will be live at your Cloudflare Workers URL. Assets are served via Cloudflare for global CDN performance.
 
